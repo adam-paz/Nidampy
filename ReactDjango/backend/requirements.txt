@@ -9,3 +9,5 @@ pytz
 setuptools
 sqlparse
 dnspython
+djangorestframework
+coverage
