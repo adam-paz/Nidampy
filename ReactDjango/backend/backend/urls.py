@@ -16,10 +16,19 @@ Including another URLconf
 from django.urls import path
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
+from rest_framework import routers
 
 from server import views
+#from frontend import views
+
+#router = routers.DefaultRouter()
+#router.register(r'boards', views.home)
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
+    url(r'^boards', views.home, name='boards')
+    #path('', include('server.urls')),
+    #path('', include('frontend.urls')),
 ]
