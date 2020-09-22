@@ -13,10 +13,15 @@ def home(request):
     #return render(request, '../../client/public/index.html')
     #, {'boards': boards})
     
-    boards = Board.objects.all()
-    serializer_class = serializers.serialize('json', boards)
+    boards = Board.objects.values()
+    serializer_class = serializers.serialize
 
     
 
-    return render(request, 'home.html', {'boards': boards})
+    #return HttpResponse(request, 'frontend/index.js', {'boards': boards})
+    return JsonResponse({'boards':'boards'})
+
+class BoardViewSet(viewsets.ModelViewSet):
+    queryset = Board.objects.all().order_by('name')
+    serializer_class = BoardSerializer
     

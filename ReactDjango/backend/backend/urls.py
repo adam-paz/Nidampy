@@ -22,13 +22,15 @@ from rest_framework import routers
 from server import views
 #from frontend import views
 
-#router = routers.DefaultRouter()
-#router.register(r'boards', views.home)
+router = routers.DefaultRouter()
+router.register(r'boards', views.BoardViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^boards', views.home, name='boards')
+    #url(r'^boards', views.BoardViewSet, name='boards')
     #path('', include('server.urls')),
     #path('', include('frontend.urls')),
 ]
