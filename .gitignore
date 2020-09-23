@@ -130,3 +130,6 @@ dmypy.json
 
 #secure
 secure.txt
+
+#node_modules
+node_modules
