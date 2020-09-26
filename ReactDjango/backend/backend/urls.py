@@ -23,14 +23,12 @@ from server import views
 #from frontend import views
 
 router = routers.DefaultRouter()
-router.register(r'boards', views.BoardViewSet)
+router.register(r'boards', views.BoardViewSet, basename="Boards")
 
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
-    #url(r'^boards', views.BoardViewSet, name='boards')
-    #path('', include('server.urls')),
-    #path('', include('frontend.urls')),
+    # url('^boards/(?P<board>.+)/$', views.BoardViewSet),
 ]

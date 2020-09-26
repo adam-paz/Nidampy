@@ -7,3 +7,8 @@ To install Python dependencies:
 To install Node dependencies:
 1) Navigate to "ReactDjango/backend/templates/frontend"
 2) Install modules with "npm install"
+
+# Run
+env 1) source ReactDjango/env/Scripts/activate
+backend 2) cd ReactDjango/backend && python manage.py runserver
+frontend 3) cd ReactDjango/backend/templates/frontend && npm start
