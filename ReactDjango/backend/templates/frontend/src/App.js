@@ -6,7 +6,9 @@ import Table from 'react-bootstrap/Table';
 
 class App extends Component{
   componentDidMount() {
-    axios.get('http://localhost:8000/boards', 
+    // tag = "Django"
+    var board= "Django"
+    axios.get('http://localhost:8000/boards/?tag='+ "" + '&board=' + board, 
       
     )
       .then(res => {
