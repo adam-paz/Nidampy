@@ -51,10 +51,10 @@ class BoardViewSet(viewsets.ModelViewSet, APIView):
         Optionally restricts the returned purchases to a given user,
         by filtering against a `username` query parameter in the URL.
         """
-        # queryset = Board.objects.all()
+        queryset = Board.objects.all()
        
         board = self.request.query_params.get('board', None)
-        queryset = Board.objects.filter(name=board)
-        # if board is not None:
-        #     queryset = queryset.filter(name=board)
+        # queryset = Board.objects.filter(name=board)
+        if board is not None:
+            queryset = queryset.filter(name=board)
         return queryset
