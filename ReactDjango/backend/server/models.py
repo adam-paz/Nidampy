@@ -1,8 +1,28 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
+class Profile(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    birth_date = models.DateField(null=True, blank=True) 
+    
+
+class Order(models.Model):
+    created = models.DateField( auto_now=False, auto_now_add=False)
+    modified = models.DateField( auto_now=False, auto_now_add=False)
+    status = models.CharField( max_length=50)
+    amount = models.IntegerField()
+    user = models.ForeignKey(Profile, related_name='orders', on_delete=models.CASCADE) 
+
+class OrderItem(models.Model):
+    quantity = models.IntegerField()
+    product = models.CharField(max_length=50)
+    order = models.ForeignKey(Order, related_name='orderItems', on_delete=models.CASCADE) 
+    
 
 class Board(models.Model):
     name = models.CharField(max_length=30, unique=True)
